@@ -5,14 +5,12 @@ import com.db.canvas.command.Command;
 import com.db.canvas.command.CommandFactory;
 import com.db.canvas.exception.MalformedCommandException;
 import com.db.canvas.exception.PrintException;
+import lombok.AllArgsConstructor;
 
+@AllArgsConstructor
 public class CanvasManagerImpl implements CanvasManager {
 
     private CanvasSheet canvasSheet;
-
-    public CanvasManagerImpl() {
-        canvasSheet = new CanvasSheet();
-    }
 
     public void manage(String input) {
         try {
@@ -24,10 +22,5 @@ public class CanvasManagerImpl implements CanvasManager {
         } catch (PrintException pe) {
             System.out.println("Error: " + pe.getMessage());
         }
-    }
-
-
-    CanvasSheet getCanvasSheet(){
-        return canvasSheet;
     }
 }

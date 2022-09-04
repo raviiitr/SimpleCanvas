@@ -13,7 +13,7 @@ public class CanvasApp {
         Scanner scanner = new Scanner(System.in);
 
         boolean keepRunning = true;
-        CanvasManager manager = new CanvasManagerImpl();
+        CanvasManager manager = new CanvasManagerImpl(new CanvasSheet());
 
         String input;
 

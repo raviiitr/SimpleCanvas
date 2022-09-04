@@ -44,8 +44,43 @@ public class CommandFactoryTest {
     }
 
     @Test(expected = MalformedCommandException.class)
+    public void testGetCommand_WithBlank() throws MalformedCommandException {
+        CommandFactory.getCommand(" ", canvasSheet);
+    }
+
+    @Test(expected = MalformedCommandException.class)
     public void testGetCommandForCreateCanvas_WithInvalidData() throws MalformedCommandException {
         CommandFactory.getCommand("C a b", canvasSheet);
+    }
+
+    @Test(expected = MalformedCommandException.class)
+    public void testGetCommandForCreateCanvas_WithLessParams() throws MalformedCommandException {
+        CommandFactory.getCommand("C 2", canvasSheet);
+    }
+
+    @Test(expected = MalformedCommandException.class)
+    public void testGetCommandForLine_WithLessParams() throws MalformedCommandException {
+        CommandFactory.getCommand("L 2 3 4", canvasSheet);
+    }
+
+    @Test(expected = MalformedCommandException.class)
+    public void testGetCommandForRectangle_WithLessParams() throws MalformedCommandException {
+        CommandFactory.getCommand("R 2 3 4", canvasSheet);
+    }
+
+    @Test(expected = MalformedCommandException.class)
+    public void testGetCommandForCreateCanvas_WithMoreParams() throws MalformedCommandException {
+        CommandFactory.getCommand("C 2 3 4", canvasSheet);
+    }
+
+    @Test(expected = MalformedCommandException.class)
+    public void testGetCommandForLine_WithMoreParams() throws MalformedCommandException {
+        CommandFactory.getCommand("L 7 1 7 3 5", canvasSheet);
+    }
+
+    @Test(expected = MalformedCommandException.class)
+    public void testGetCommandForRectangle_WithMoreParams() throws MalformedCommandException {
+        CommandFactory.getCommand("R 15 2 20 5 6", canvasSheet);
     }
 
     @Test
